@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    int rows = 5; // Number of rows in the pattern
+    int stars_per_row = 5; // Number of stars in each row
+
+    // Outer loop for rows
+    for (i = 0; i < rows; i++) {
+        // Inner loop for printing stars in each row
+        for (j = 0; j < stars_per_row; j++) {
+            printf("*");
+        }
+        printf("\n"); // Move to the next line after printing a row
+    }
+
+    return 0;
+}

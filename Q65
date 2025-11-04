@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main() {
+    int size, i, search_element;
+    int first, last, middle;
+
+    // Get the size of the array from the user
+    printf("Enter the number of elements: ");
+    scanf("%d", &size);
+
+    // Declare a variable-length array (supported by C99 and later)
+    int arr[size];
+
+    // Get the array elements from the user (assume they are sorted)
+    printf("Enter %d sorted integers:\n", size);
+    for (i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Get the element to search for
+    printf("Enter the value to find: ");
+    scanf("%d", &search_element);
+
+    // Initialize the search boundaries
+    first = 0;
+    last = size - 1;
+    
+    // Perform the binary search
+    while (first <= last) {
+        middle = (first + last) / 2;
+
+        if (arr[middle] < search_element) {
+            first = middle + 1;
+        } else if (arr[middle] == search_element) {
+            printf("Found at index %d\n", middle);
+            return 0; // Element found, exit successfully
+        } else {
+            last = middle - 1;
+        }
+    }
+
+    // If the loop finishes, the element was not found
+    printf("-1\n");
+    
+    return 0;
+}

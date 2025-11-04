@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int n; // Variable to store the size of the array
+    int even_count = 0; // Counter for even numbers, initialized to 0
+    int odd_count = 0; // Counter for odd numbers, initialized to 0
+
+    // Prompt user to enter the size of the array
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    // Declare an array of size 'n'
+    int arr;
+
+    // Prompt user to enter the elements
+    printf("Enter %d elements:\n", n);
+
+    // Loop to read the elements from the user
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Loop to count even and odd numbers
+    for (int i = 0; i < n; i++) {
+        if (arr[i] % 2 == 0) {
+            even_count++;
+        } else {
+            odd_count++;
+        }
+    }
+
+    // Print the final counts
+    printf("Even=%d, Odd=%d\n", even_count, odd_count);
+
+    return 0;
+}

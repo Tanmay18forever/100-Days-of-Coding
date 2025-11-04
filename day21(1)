@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <math.h> // Required for pow() and log10()
+
+int main() {
+    int num, swappedNum;
+    int firstDigit, lastDigit, totalDigits;
+
+    // Input number from the user
+    printf("Enter any number: ");
+    scanf("%d", &num);
+
+    // Handle single-digit numbers or zero
+    if (num >= 0 && num <= 9) {
+        printf("Number after swapping first and last digit: %d\n", num);
+        return 0;
+    }
+
+    // Find the last digit
+    lastDigit = num % 10;
+
+    // Find the total number of digits (minus one for the power calculation)
+    totalDigits = (int)log10(num);
+
+    // Find the first digit
+    firstDigit = (int)(num / pow(10, totalDigits));
+
+    // Construct the swapped number
+    // 1. Remove the first digit and add the last digit at the beginning
+    swappedNum = lastDigit * (int)pow(10, totalDigits);
+    // 2. Add the middle part of the number (excluding first and last)
+    swappedNum += num % ((int)pow(10, totalDigits)); // Remove first digit's place value
+    swappedNum -= lastDigit; // Remove original last digit
+    // 3. Add the original first digit at the end
+    swappedNum += firstDigit;
+
+    printf("Original number = %d\n", num);
+    printf("Number after swapping first and last digit: %d\n", swappedNum);
+
+    return 0;
+}

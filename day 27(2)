@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int rows = 4;
+    int i, j;
+
+    // Part 1: Upper half of the diamond (increasing number of stars)
+    for (i = 1; i <= rows; i++) {
+        // Print leading spaces
+        for (j = 1; j <= rows - i; j++) {
+            printf(" ");
+        }
+
+        // Print stars
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+        
+        // Move to the next line
+        printf("\n");
+    }
+
+    // Part 2: Lower half of the diamond (decreasing number of stars)
+    // The loop starts from rows-1 to avoid reprinting the middle line
+    for (i = rows - 1; i >= 1; i--) {
+        // Print leading spaces
+        for (j = 1; j <= rows - i; j++) {
+            printf(" ");
+        }
+
+        // Print stars
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+        
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}

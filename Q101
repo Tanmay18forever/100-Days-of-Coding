@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+// Function to find the first and last occurrence of a target in a sorted array
+void findFirstAndLastOccurrence(int nums[], int size, int target) {
+    int first = -1;
+    int last = -1;
+
+    // Iterate through the array to find occurrences
+    for (int i = 0; i < size; i++) {
+        if (nums[i] == target) {
+            if (first == -1) { // If this is the first time we find the target
+                first = i;
+            }
+            last = i; // Always update last to the current index
+        }
+    }
+
+    // Print the results
+    printf("%d %d\n", first, last);
+}
+
+int main() {
+    // Example usage
+    int nums1[] = {1, 2, 4, 4, 4, 5, 7, 8};
+    int size1 = sizeof(nums1) / sizeof(nums1[0]);
+    int target1 = 4;
+    printf("Array: [1, 2, 4, 4, 4, 5, 7, 8], Target: 4 -> ");
+    findFirstAndLastOccurrence(nums1, size1, target1); // Expected: 2 4
+
+    int nums2[] = {10, 20, 30, 40, 50};
+    int size2 = sizeof(nums2) / sizeof(nums2[0]);
+    int target2 = 25;
+    printf("Array: [10, 20, 30, 40, 50], Target: 25 -> ");
+    findFirstAndLastOccurrence(nums2, size2, target2); // Expected: -1 -1
+
+    int nums3[] = {5, 5, 5, 5, 5};
+    int size3 = sizeof(nums3) / sizeof(nums3[0]);
+    int target3 = 5;
+    printf("Array: [5, 5, 5, 5, 5], Target: 5 -> ");
+    findFirstAndLastOccurrence(nums3, size3, target3); // Expected: 0 4
+
+    int nums4[] = {1, 2, 3, 4, 5};
+    int size4 = sizeof(nums4) / sizeof(nums4[0]);
+    int target4 = 1;
+    printf("Array: [1, 2, 3, 4, 5], Target: 1 -> ");
+    findFirstAndLastOccurrence(nums4, size4, target4); // Expected: 0 0
+
+    return 0;
+}

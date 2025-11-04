@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int i, j, rows;
+
+    // You can set the number of rows directly or take input from the user.
+    // For this example, we'll set it to 5 to match the pattern.
+    rows = 5; 
+
+    // Outer loop for the number of rows
+    for (i = 1; i <= rows; i++) {
+        // Inner loop to print numbers in each row
+        for (j = 1; j <= i; j++) {
+            printf("%d", j);
+        }
+        // Move to the next line after printing numbers in a row
+        printf("\n");
+    }
+
+    return 0;
+}

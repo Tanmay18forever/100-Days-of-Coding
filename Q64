@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main() {
+    long long n;
+    int digit;
+    int frequency[10] = {0}; 
+    int max_freq = 0;
+    int result_digit = 0;
+
+    printf("Enter an integer number: ");
+    scanf("%lld", &n);
+
+    if (n == 0) {
+        printf("Output: 0\n");
+        return 0;
+    }
+
+    long long temp_n = n;
+    while (temp_n > 0) {
+        digit = temp_n % 10;
+        frequency[digit]++;
+        temp_n /= 10;
+    }
+
+    for (digit = 0; digit < 10; digit++) {
+        if (frequency[digit] > max_freq) {
+            max_freq = frequency[digit];
+            result_digit = digit;
+        }
+    }
+
+    printf("Output: %d\n", result_digit);
+
+    return 0;
+}

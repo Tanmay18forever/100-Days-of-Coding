@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[1000];
+    char surname[100];
+    int i = 0, j = 0, len;
+
+    // Read the full name
+    fgets(str, sizeof(str), stdin);
+
+    // Remove newline character if present
+    len = strlen(str);
+    if (str[len - 1] == '\n') {
+        str[len - 1] = '\0';
+    }
+
+    // Print initials and extract surname
+    char *token = strtok(str, " ");
+    while (token != NULL) {
+        if (strtok(NULL, " ") == NULL) {
+            // Last token is the surname
+            strcpy(surname, token);
+            break;
+        } else {
+            // Print initial
+            printf("%c.", token[0]);
+        }
+        token = strtok(NULL, " ");
+    }
+
+    // Print surname
+    printf(" %s\n", surname);
+    return 0;
+}

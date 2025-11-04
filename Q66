@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main() {
+    int current_size, new_element, i, j, insert_pos;
+
+    printf("Enter the current number of elements: ");
+    scanf("%d", &current_size);
+
+    int arr[current_size + 1];
+
+    printf("Enter %d sorted integers:\n", current_size);
+    for (i = 0; i < current_size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the element to insert: ");
+    scanf("%d", &new_element);
+
+    insert_pos = -1;
+    for (i = 0; i < current_size; i++) {
+        if (new_element < arr[i]) {
+            insert_pos = i;
+            break;
+        }
+    }
+    if (insert_pos == -1) {
+        insert_pos = current_size;
+    }
+
+    for (j = current_size; j > insert_pos; j--) {
+        arr[j] = arr[j - 1];
+    }
+
+    arr[insert_pos] = new_element;
+
+    printf("Output:\n");
+    for (i = 0; i < current_size + 1; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}

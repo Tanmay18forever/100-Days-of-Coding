@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    int size, i, j;
+    long long sum = 0;
+
+    // Get the size of the square matrix
+    printf("Enter the size of the square matrix: ");
+    scanf("%d", &size);
+
+    int matrix[size][size];
+
+    // Get the matrix elements
+    printf("Enter the matrix elements:\n");
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Calculate the sum of the main diagonal elements
+    for (i = 0; i < size; i++) {
+        sum += matrix[i][i];
+    }
+
+    // Print the sum
+    printf("Output:\n%lld\n", sum);
+
+    return 0;
+}

@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+// Function to calculate GCD using Euclidean algorithm
+int gcd(int a, int b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+// Function to calculate LCM
+int lcm(int a, int b) {
+    // Handle cases where one or both numbers are zero
+    if (a == 0 || b == 0) {
+        return 0; // LCM is 0 if any number is 0
+    }
+    // Use the formula: LCM(a, b) = (a * b) / GCD(a, b)
+    // To prevent potential overflow for large numbers, divide first
+    return (a / gcd(a, b)) * b; 
+}
+
+int main() {
+    int num1, num2;
+
+    printf("Enter two positive integers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Ensure positive input for the GCD and LCM logic
+    if (num1 < 0) num1 = -num1;
+    if (num2 < 0) num2 = -num2;
+
+    printf("The LCM of %d and %d is %d.\n", num1, num2, lcm(num1, num2));
+
+    return 0;
+}

@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+int main() {
+    int size, k, i, start, end, temp;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &size);
+
+    int arr[size];
+
+    printf("Enter %d integers:\n", size);
+    for (i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the number of positions to rotate: ");
+    scanf("%d", &k);
+
+    k = k % size;
+    if (k < 0) {
+        k += size;
+    }
+
+    // Reverse the whole array
+    start = 0;
+    end = size - 1;
+    while (start < end) {
+        temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+
+    // Reverse the first k elements
+    start = 0;
+    end = k - 1;
+    while (start < end) {
+        temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+
+    // Reverse the remaining (size - k) elements
+    start = k;
+    end = size - 1;
+    while (start < end) {
+        temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+
+    printf("Output:\n");
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}

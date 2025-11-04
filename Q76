@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main() {
+    int rows, cols, i, j;
+
+    // Get the number of rows and columns
+    printf("Enter the number of rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+
+    // Check if it's a square matrix
+    if (rows != cols) {
+        printf("Output:\nFalse\n");
+        return 0;
+    }
+
+    int matrix[rows][cols];
+    int symmetric = 1; // Flag to assume it is symmetric until proven otherwise
+
+    // Get the matrix elements
+    printf("Enter the matrix elements:\n");
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Compare matrix[i][j] with matrix[j][i]
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            if (matrix[i][j] != matrix[j][i]) {
+                symmetric = 0; // It is not symmetric
+                break;
+            }
+        }
+        if (symmetric == 0) {
+            break;
+        }
+    }
+
+    // Print the result
+    if (symmetric) {
+        printf("Output:\nTrue\n");
+    } else {
+        printf("Output:\nFalse\n");
+    }
+
+    return 0;
+}
